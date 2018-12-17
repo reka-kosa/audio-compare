@@ -12,16 +12,7 @@ Install required packages using the following command: <br>
 <<<<<<< HEAD
 3. **pydub** for preprocessing <br>
 
-## Build
-Build with <br>
-```g++ -std=c++0x AudioStreamer.cpp main.cpp -o streamer `pkg-config --cflags --libs gstreamer-app-1.0` ``` .
-
-or use `cmake` with `CMakeList.txt`
-=======
-3. **Pydub** for preprocess audio: <br>
-https://pypi.org/project/pydub/
 
 ## Build
-Build with <br> `cmake` using `CMakeList.txt`.
->>>>>>> 4ba010d03dc4a597f223e9b911a8c3d23d37020d
+Build with <br> `cmake` (from root directory) using `CMakeList.txt`.
 
