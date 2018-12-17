@@ -1,0 +1,101 @@
+digraph pipeline {
+  rankdir=LR;
+  fontname="sans";
+  fontsize="10";
+  labelloc=t;
+  nodesep=.1;
+  ranksep=.2;
+  label="<GstPlayBin>\n_playbin\n[-] -> [>]\ncurrent-uri=\"file:///home/reka/Desktop/elte_remainder/szakdoga/audio-compare/music/test_2/o…\nsource=(GstFileSrc) source\naudio-sink=(GstAppSink) _appsink";
+  node [style="filled,rounded", shape=box, fontsize="9", fontname="sans", margin="0.0,0.0"];
+  edge [labelfontsize="6", fontsize="9", fontname="monospace"];
+  
+  legend [
+    pos="0,0!",
+    margin="0.05,0.05",
+    style="filled",
+    label="Legend\lElement-States: [~] void-pending, [0] null, [-] ready, [=] paused, [>] playing\lPad-Activation: [-] none, [>] push, [<] pull\lPad-Flags: [b]locked, [f]lushing, [b]locking; upper-case is set\lPad-Task: [T] has started task, [t] has paused task\l",
+  ];
+  subgraph cluster_uridecodebin0_0x10d4050 {
+    fontname="Bitstream Vera Sans";
+    fontsize="8";
+    style="filled,rounded";
+    color=black;
+    label="GstURIDecodeBin\nuridecodebin0\n[-] -> [=]\nparent=(GstPlayBin) _playbin\nuri=\"file:///home/reka/Desktop/elte_remainder/szakdoga/audio-compare/music/test_2/o…\nsource=(GstFileSrc) source\ncaps=video/x-raw(ANY); audio/x-raw(ANY); text/x-raw; subpicture/x-dvd; subpicture/x-d…";
+    fillcolor="#ffffff";
+    subgraph cluster_decodebin0_0x10de1d0 {
+      fontname="Bitstream Vera Sans";
+      fontsize="8";
+      style="filled,rounded";
+      color=black;
+      label="GstDecodeBin\ndecodebin0\n[-] -> [=]\nparent=(GstURIDecodeBin) uridecodebin0\ncaps=video/x-raw(ANY); audio/x-raw(ANY); text/x-raw; subpicture/x-dvd; subpicture/x-d…";
+      subgraph cluster_decodebin0_0x10de1d0_sink {
+        label="";
+        style="invis";
+        _proxypad0_0x10e8120 [color=black, fillcolor="#ddddff", label="proxypad0\n[<][bfb]", height="0.2", style="filled,solid"];
+      decodebin0_0x10de1d0_sink_0x10e6060 -> _proxypad0_0x10e8120 [style=dashed, minlen=0]
+        decodebin0_0x10de1d0_sink_0x10e6060 [color=black, fillcolor="#ddddff", label="sink\n[<][bfb]", height="0.2", style="filled,solid"];
+      }
+
+      fillcolor="#ffffff";
+      subgraph cluster_typefind_0x10e10a0 {
+        fontname="Bitstream Vera Sans";
+        fontsize="8";
+        style="filled,rounded";
+        color=black;
+        label="GstTypeFindElement\ntypefind\n[=]\nparent=(GstDecodeBin) decodebin0";
+        subgraph cluster_typefind_0x10e10a0_sink {
+          label="";
+          style="invis";
+          typefind_0x10e10a0_sink_0x10d04c0 [color=black, fillcolor="#aaaaff", label="sink\n[<][bfb][T]", height="0.2", style="filled,solid"];
+        }
+
+        subgraph cluster_typefind_0x10e10a0_src {
+          label="";
+          style="invis";
+          typefind_0x10e10a0_src_0x10d0700 [color=black, fillcolor="#ffaaaa", label="src\n[>][bfb]", height="0.2", style="filled,solid"];
+        }
+
+        typefind_0x10e10a0_sink_0x10d04c0 -> typefind_0x10e10a0_src_0x10d0700 [style="invis"];
+        fillcolor="#aaffaa";
+      }
+
+      _proxypad0_0x10e8120 -> typefind_0x10e10a0_sink_0x10d04c0 [label="ANY"]
+    }
+
+    subgraph cluster_source_0x10da110 {
+      fontname="Bitstream Vera Sans";
+      fontsize="8";
+      style="filled,rounded";
+      color=black;
+      label="GstFileSrc\nsource\n[=]\nparent=(GstURIDecodeBin) uridecodebin0\nlocation=\"/home/reka/Desktop/elte_remainder/szakdoga/audio-compare/music/test_2/out_2_02…";
+      subgraph cluster_source_0x10da110_src {
+        label="";
+        style="invis";
+        source_0x10da110_src_0x10d0280 [color=black, fillcolor="#ffaaaa", label="src\n[<][bfb]", height="0.2", style="filled,solid"];
+      }
+
+      fillcolor="#ffaaaa";
+    }
+
+    source_0x10da110_src_0x10d0280 -> decodebin0_0x10de1d0_sink_0x10e6060 [label="ANY"]
+  }
+
+  subgraph cluster_playsink_0x10ca250 {
+    fontname="Bitstream Vera Sans";
+    fontsize="8";
+    style="filled,rounded";
+    color=black;
+    label="GstPlaySink\nplaysink\n[-] -> [=]\nparent=(GstPlayBin) _playbin\nflags=((GstPlayFlags) Render the video stream | Render the audio stream | Render subti…\naudio-sink=(GstAppSink) _appsink\nsend-event-mode=((GstPlaySinkSendEventMode) Sends the event to sinks until the first one handles…";
+    fillcolor="#ffffff";
+    subgraph cluster_streamsynchronizer0_0x10b61c0 {
+      fontname="Bitstream Vera Sans";
+      fontsize="8";
+      style="filled,rounded";
+      color=black;
+      label="GstStreamSynchronizer\nstreamsynchronizer0\n[=]\nparent=(GstPlaySink) playsink";
+      fillcolor="#ffffff";
+    }
+
+  }
+
+}

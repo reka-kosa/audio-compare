@@ -1,0 +1,36 @@
+digraph pipeline {
+  rankdir=LR;
+  fontname="sans";
+  fontsize="10";
+  labelloc=t;
+  nodesep=.1;
+  ranksep=.2;
+  label="<GstPlayBin>\n_playbin\n[0]\nuri=\"file:///home/reka/Desktop/elte_remainder/szakdoga/audio-compare/music/test_2/o…\naudio-sink=(GstAppSink) _appsink";
+  node [style="filled,rounded", shape=box, fontsize="9", fontname="sans", margin="0.0,0.0"];
+  edge [labelfontsize="6", fontsize="9", fontname="monospace"];
+  
+  legend [
+    pos="0,0!",
+    margin="0.05,0.05",
+    style="filled",
+    label="Legend\lElement-States: [~] void-pending, [0] null, [-] ready, [=] paused, [>] playing\lPad-Activation: [-] none, [>] push, [<] pull\lPad-Flags: [b]locked, [f]lushing, [b]locking; upper-case is set\lPad-Task: [T] has started task, [t] has paused task\l",
+  ];
+  subgraph cluster_playsink_0x10ca250 {
+    fontname="Bitstream Vera Sans";
+    fontsize="8";
+    style="filled,rounded";
+    color=black;
+    label="GstPlaySink\nplaysink\n[0]\nparent=(GstPlayBin) _playbin\nflags=((GstPlayFlags) Render the video stream | Render the audio stream | Render subti…\naudio-sink=(GstAppSink) _appsink\nsend-event-mode=((GstPlaySinkSendEventMode) Sends the event to sinks until the first one handles…";
+    fillcolor="#ffffff";
+    subgraph cluster_streamsynchronizer0_0x10b61c0 {
+      fontname="Bitstream Vera Sans";
+      fontsize="8";
+      style="filled,rounded";
+      color=black;
+      label="GstStreamSynchronizer\nstreamsynchronizer0\n[0]\nparent=(GstPlaySink) playsink";
+      fillcolor="#ffffff";
+    }
+
+  }
+
+}
