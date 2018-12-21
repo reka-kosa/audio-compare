@@ -9,7 +9,7 @@
 ``` source activate mp3proc ``` <br>
 ``` pip install pydub ``` <br>
 
-Note: Start the c++ program from this environment!
+Start the program from this environment.
 
 ## Required packages
 Install required packages using the following command: <br>
