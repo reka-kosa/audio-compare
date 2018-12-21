@@ -19,9 +19,10 @@ Install required packages using the following command: <br>
 ```sudo apt install libeigen3-dev```
 
 ## Build and start program
-Build with <br>
+From project root using terminal,  
+build with <br>
 ```cmake .``` <br>
 ```make``` <br>
-Start with <br>
+run with <br>
 ```source activate mp3proc``` <br>
 ```./audio_compare```
