@@ -1,16 +1,15 @@
-#include "src/AudioProcessor.h"
-#include "src/AudioStreamer.h"
-#include "src/MFCC.h"
-
-#include <iostream>
-#include <unistd.h>
-#include <limits.h>
+#include "src/core/AudioProcessor.h"
+#include "src/init/InitProcessing.h"
 
 int main()
 {
-    char cwd[PATH_MAX];
-    if (getcwd(cwd, sizeof(cwd)))
-        AudioProcessor(std::string(cwd)+std::string("/preprocessed_2018-12-17_04:28:58/"));
+
+    InitProcessing init;
+    init.InteractWithUser();
+    init.CheckDirectory();
+
+    AudioProcessor audio_proc(init.get_src_folder(), init.get_sampling_rate());
+    audio_proc.StartProcessing();
 
     return 0;
 }
